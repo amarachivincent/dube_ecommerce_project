@@ -1,0 +1,34 @@
+
+.details-grid .container-fluid{
+width:65%;
+font-size:0.7em;
+font-family: 'Courier New', Courier, monospace;
+margin-bottom:6em;
+line-height: 1.2em;
+}
+
+
+.details-btn{
+background:black;
+border-radius:unset;
+padding:0.4em 1.4em;
+color:white;
+border:thin solid black;
+}
+
+.navbar-brand-details{
+  background: rgb(236, 39, 39);
+color:white;
+padding:0 0.5em;
+font-size:1.8em;
+font-style: italic;
+}
+
+
+@media (max-width:480px){
+
+.details-grid .container-fluid{
+width:100%;
+}
+
+}

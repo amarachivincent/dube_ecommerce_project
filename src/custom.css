@@ -1,0 +1,1697 @@
+/* Universal Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base Body and HTML Styles */
+body,
+html {
+  border: 0;
+  padding: 0;
+  background: white;
+  height: 100%; /* Ensure body takes full height for flex children */
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Scrollbar Styling for Webkit browsers (Chrome, Safari, Edge) */
+body::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Scrollbar Styling for Firefox */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #bbb #fff;
+}
+body a{
+color:black;
+text-decoration: none;
+}
+
+
+/* Homepage Frame (Main Layout Container) */
+.homepage-frame {
+  background: black;
+  font-family: serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure it takes at least full viewport height */
+  /* Updated padding-bottom to accommodate ONLY the fixed .social-inner bar */
+  padding-bottom: 40px; /* (Approximate height of .social-inner) */
+}
+
+.wrapper {
+  background: white;
+}
+
+/* Navbar Home Specific Styles */
+.navbar-home {
+  border-top: 1em solid black;
+  font-family: sans-serif;
+  margin-top:1.2em;
+ 
+}
+
+.navbar-home .container-fluid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.navbar-brand-home {
+  font-weight: bold;
+  padding: 0em 0.6em;
+  display: flex;
+  flex-direction: column;
+  background: rgb(236, 39, 39);
+  margin-top: 0.25em;
+  font-style: italic;
+  font-size: 1.7em;
+  color: #fff;
+  position: unset;
+  align-items: center;
+  margin-left:0em;
+  
+}
+
+.navbar-text-home {
+  color: white;
+  font-size: 0.8em;
+  margin: 1.2em;
+  margin-left: 5em;
+  display: flex;
+  justify-content: center;
+  font-family: 'Courier New', Courier, monospace;
+  
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.8em;
+    flex-direction: column;
+    padding:0;
+  }
+  .navbar-brand {
+    /*
+    margin-top: 0.4em;/*
+    margin-bottom: 1.2em;*/
+    padding: 0em 0.8em;
+    font-style: italic;
+    font-size: 1.8em;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+  }
+
+  .navbar-text {
+    font-size: 0.8em;
+    font-family:'Courier New', Courier, monospace;
+    font-weight:unset;
+    display: block;
+    margin-bottom: 0em;
+    margin-top:0.5em;;
+    
+    
+  }
+/* Page Header Styles */
+.page-header {
+  background:white;
+  width: 100%;
+  padding: 0.3em;
+  display:flex;
+  flex-direction: column;
+   position:unset;
+}
+
+.navbar-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-header .navbar-text {
+  color: black;
+}
+
+.page-header .navbar-brand a {
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-brand-home a {
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-brand:hover {
+  color: white;
+}
+
+
+.page-footer .container-fluid a:hover{
+  background: red;
+  color: white;
+}
+
+.home-grid .nav a:hover ,.home-grid .social-inner a:hover{
+background:red;
+color:white;
+padding:0;
+}
+
+.preview-grid .card-header-inner .card-header-info a:hover{
+background:red;
+color:white;
+}
+
+.category-menu-list a:hover{
+background:red;
+color:white;
+}
+/* Home Grid Section (Main Content Area) */
+.home-grid {
+  width: 100%;
+  margin-top: 0.8em;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 0;
+  margin: 1.4em 0;
+  /*flex-grow: 1; /* Allow home-grid to take up available vertical space */
+  display: flex;
+  justify-content: center; /* Center its content horizontally */
+ 
+  margin-bottom:0em;
+}
+
+.home-grid .container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  font-size: 0.85em;
+  align-items: center; /* Center the entire block (nav, social-links) horizontally on the page */
+  width: 90%; /* Default for smaller screens */
+  max-width: 1200px; /* Limit max width on very large screens */
+  margin: 0 auto; /* Center the container */
+  height: auto; /* Allow height to adapt to content */
+  /* If the gap is still here, adding `gap: 0;` to the parent flex container might solve it */
+  gap: 0; /* Ensures no gap between direct children (.nav and .social-links) */
+}
+
+/* Navigation Links within Home Grid (NOT FIXED) */
+.home-grid .container .nav {
+  display: flex;
+  flex-direction: column; /* Always column for these links */
+  font-weight: normal;
+  width: auto; /* Let content define width, crucial for proper centering by parent */
+  margin: 0; /* ZERO ALL MARGINS */
+  padding: 0; /* ZERO ALL PADDINGS */
+  gap: 0; /* Ensure no gap between flex items if browser default adds it */
+  flex-grow: 1; /* Allow nav to take up available space */
+  flex-shrink: 0; /* Prevent shrinking which might affect spacing */
+}
+
+.home-grid .container .nav a {
+  text-decoration: none;
+  color: white;
+  margin: 0; /* ABSOLUTELY NO MARGIN AROUND LINKS */
+  padding: 0; /* ABSOLUTELY NO PADDING AROUND LINKS */
+  line-height: 1; /* TIGHTEN LINE HEIGHT TO 1 */
+  text-align: left; /* ALIGN INDIVIDUAL LINK TEXT TO THE LEFT */
+  width: fit-content; /* Ensure link takes full width of its parent (.nav) */
+  display: block; /* Force block display to control height precisely */
+ /* vertical-align: top; /* Prevents extra space below elements */
+  margin-top:1.2em;
+    padding: 0.1em 0.2em; /* Added padding around the text for the background effect */
+
+}
+
+/* Social Links (Icons) - NOT FIXED */
+.home-grid .container .social-links {
+  margin: 0; /* ABSOLUTELY NO MARGIN FROM NAV LINKS ABOVE */
+  padding: 0; /* ZERO ALL PADDINGS */
+  width: auto; /* Let content define width, crucial for proper centering by parent */
+  display: flex;
+  justify-content: flex-start; /* ALIGN ICONS TO THE LEFT */
+  align-items: center;
+  background: none;
+  box-shadow: none;
+  height: auto;
+  gap: 0; /* Ensure no gap between flex items (icons) */
+  flex-shrink: 0; /* Prevent shrinking which might affect spacing */
+  margin-bottom:0em;
+  margin-left: -2em; /* Space between links */
+  margin-top:2em;
+}
+
+.home-grid .container .social-links i {
+  color: #aaa;
+  font-size: 1.2em; /* Make icons a bit larger */
+  padding: 0; /* ABSOLUTELY NO PADDING */
+  margin: 0 0.1em; /* Minimal horizontal space between icons */
+  line-height: 3em; /* TIGHTEN LINE HEIGHT TO 1 */
+  vertical-align: top; /* Prevents extra space below elements */
+}
+
+/* Social Inner (Terms, F.A.Q, Privacy) - FIXED TO ABSOLUTE BOTTOM */
+.home-grid .container .social-inner {
+  position: fixed; /* Fixed to the viewport */
+  bottom: 0; /* Align to the very bottom */
+  left: 40px;
+  right: 0;
+  width: 100%; /* Take full width */
+  display: flex;
+  justify-content: center; /* Center the links */
+  align-items: center;
+  padding: 10px 0; /* Padding above and below links */
+  z-index: 1001; /* Ensure it's on top of other content */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  height: 40px; /* Explicit height for padding-bottom calculation */
+  flex-wrap: wrap; /* Allow links to wrap on smaller screens */
+  
+  margin-bottom:1em;
+}
+
+
+
+.home-grid .container .social-links a  {
+ margin-left:0.8em;
+}
+
+.home-grid .container .social-inner a {
+  color: white;
+  text-decoration: none;
+  margin: 0 0.8em; /* Space between links */
+  white-space: nowrap; /* Prevent individual links from breaking */
+}
+
+.page-footer{
+ font-size:0.68em;
+ font-family:'Courier New', Courier, monospace;
+ padding:3em 1em;
+}
+.footer-main-container-fluid{
+ display:flex;
+ justify-content: center;
+ flex-direction: column;
+ align-items: center;
+
+}
+.page-footer .page-middle{
+ width:100%;
+ margin:3em auto;
+ margin-bottom:0;
+}
+
+.page-footer .footer-row-1a{
+font-size:1.2em;
+font-family: 'Courier New', Courier, monospace;
+}
+
+.page-footer .page-inner{
+width:50%;
+margin:0 auto;
+
+}
+
+.page-footer .page-outer{
+display:flex;
+justify-content:space-between;
+align-items: flex-start;
+width:100%;
+padding:1em;
+font-size:1.1em;
+}
+
+
+.page-footer .page-middle .page-inner{
+ margin:0 auto;
+}
+
+.store-grid {
+  margin: 0em auto;
+  display: flex;
+}
+
+
+
+.store-grid .home-page-layout {
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+}
+
+.store-grid .store-image {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  
+}
+
+.store-grid .card-header {
+  background: rgba(255, 255, 255, 1);
+  margin: 0em;
+  border: 0;/*
+  padding: 1.25em 0;*/
+
+}
+
+.store-grid .card-header-info {
+  display: block;/*
+  padding: 0.2em 0;*/
+}
+
+
+/*Preview Grid */
+.peview-grid {
+  margin: 0em auto;
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+.preview-grid .home-page-layout {
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+}
+
+.preview-grid .store-image {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  
+}
+
+.preview-grid .card-header-info {
+  display: block;
+  padding: 0.2em 0;
+  
+}
+
+
+/* Contact Grid Styles */
+.contact-grid {
+  margin-top: 5em;
+  margin-bottom: 8em;
+  font-size: 0.7em;
+  width: 55%;
+  font-weight: bold;
+}
+
+/* About Grid Styles */
+.page-grid {
+  font-weight:normal;
+  font-family: 'Courier New', Courier, monospace;
+  margin-top: 8em;
+  margin-bottom: 23em;
+  font-size: 0.7em;
+  width: 55%;
+  font-weight: bold;
+}
+/* Subscribe Grid Styles */
+.subscribe-grid {
+  margin-top: 16em;
+  margin-bottom: 10em;
+  font-size: 0.7em;
+  width: 55%;
+  font-family: 'Courier New', Courier, monospace;
+}
+.page-footer{
+ width:55%;
+ margin:0 auto;
+}
+
+.page-footer{
+ color:black;
+ text-decoration:none;
+}
+  
+.contact-grid form {
+  width: 100%;
+  padding: 0.5em;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.contact-grid .person-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-grid h4 {
+  padding: 0.25em 0;
+  font-weight: bold;
+}
+
+.contact-grid form input,
+.contact-grid form textarea,
+.contact-grid form select {
+  width: 100%;
+  margin: 0.6em 0;
+  padding: 0.9em;
+  border: thin solid #ccc;
+  font-weight: bold;
+  resize: none;
+}
+
+.contact-grid form .person-info input {
+  width: 48.9%;
+}
+
+.contact-grid button {
+  background: red;
+  color: white;
+  width: 15%;
+  border: thin solid red;
+  padding: 0.5em;
+  margin-top: 1em;
+  font-weight: bold;
+}
+
+
+.subscribe-grid form {
+  width: 100%;
+  padding: 0.25em;
+}
+
+.subscribe-grid form input {
+  width: 100%;
+  margin: 0.8em 0;
+  padding: 0.9em;
+  border: thin solid #ccc;
+  font-weight: bold;
+  resize: none;
+}
+
+.subscribe-grid button {
+  background: red;
+  color: white;
+  width: 23%;
+  border: thin solid red;
+  padding: 0.5em;
+  margin-top: 2em;
+}
+
+
+.all-grid-inner{
+text-align:start;
+}
+
+.category-h5{
+font-size:1.2em;
+padding:0 1em;
+}
+h4 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* HomePage Layout (from separate file, integrated here) *//*
+.home-page-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
+}
+
+.home-content-scrollable {
+  height:20%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+ 
+}*/
+
+/* Media Queries for Responsiveness (No changes needed here for link/icon gap) */
+
+/* Small Screens (max-width: 480px) */
+@media (max-width: 480px) {
+  .home-grid .container {
+    width: 90%;
+  }
+
+
+.navbar-brand-home {
+  margin-left:0em;
+}
+
+
+
+.navbar-text-home {
+margin-left: 4em;
+}
+
+/* Header/Navbar Styles */
+.navbar-brand {
+  display: flex;
+  flex-direction: column;
+  background: rgb(236, 39, 39);
+  font-style: italic;
+  font-size: 1.2em;
+  color: #fff;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-weight: bold;
+  margin-left: 2em;
+}
+
+.navbar-text {
+  color: white;
+  font-size: 0.8em;
+  margin-top: 0.25em;
+  display: none;
+}
+
+/* Page Header Styles */
+.page-header {
+  background: #eee;
+  width: 100%;
+  display:flex;
+  flex-direction: row;
+  padding:0.5em;
+}
+
+.page-footer .page-inner{
+font-size:1.05em;
+font-family:'Courier New', Courier, monospace;
+width:80%;
+margin:0 auto;
+}
+ .navbar{
+  margin-top:0;
+ }
+  .contact-grid button {
+    width: 30%;
+  }
+  .subscribe-grid button {
+    width: 30%;
+  }
+  
+  .page-footer .page-middle{
+    margin:0;
+    padding:4em;
+    border:0;
+  }
+
+  .page-footer .page-middle .page-inner{
+    width:40%;
+  }
+  
+.footer-main-container-fluid{
+ padding:0;
+ 
+}  
+    .footer-column-inner-row-inner{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    }
+          
+  .page-footer{
+   background:black;
+   color:white;
+   width:100%;
+   padding:inherit 0;
+  }                  
+
+  .page-footer a{
+  color:white;
+  text-decoration:none;
+  }
+  .contact-grid{
+  width:100%;
+  }
+
+  .store-grid{
+  font-size:0.7em;
+  margin-top:0;
+  padding:0.2em 1.5em;
+  }
+  
+   .store-grid .card {
+  flex-direction: column-reverse;
+  border-radius:unset;
+  border:thin solid #fff;
+
+  }
+
+
+   .store-grid .card-header {
+   padding:unset;
+   margin-top:1.5em;
+  }
+  .store-grid .card-header-info {
+   padding:unset;
+   
+   margin-top:0.5em;
+  }
+
+
+
+  .preview-grid {
+    margin: 0em auto;
+    font-weight:normal;
+    font-family: 'Courier New', Courier, monospace;
+    width:100%;
+    height:62%;
+  }
+  .preview-grid .store-image {
+    opacity:unset;
+  }
+  .preview-grid .store-image:hover {
+    opacity: unset;
+  }
+  .preview-grid .card-header-info {
+    padding-top:1em;
+    font-size: 0.7em;
+    display: flex;
+  }
+
+  .preview-grid .card-info-inner {
+    display: none;
+  }
+
+
+
+.preview-grid .container-fluid{
+  flex-direction: column-reverse;
+  background: rgba(255, 255, 255, 1);
+  flex-direction:row;
+  font-size: 0.7em;
+  border: unset;
+}
+
+.preview-grid .card {
+  border-radius: unset;
+  margin-top: 0em;
+  overflow: hidden;
+  color: black;
+  background: rgba(0, 0, 0, 1);
+  border: unset;
+  width:100%;
+  display:flex;
+  flex-direction: row;
+  
+}
+
+.preview-grid .card-frame{
+padding:0;
+border:thin solid #fff;
+  width:25%;
+}
+
+
+  .subscribe-grid {
+  width: 100%;
+  margin:0;
+  margin-top:2.5em;
+  margin-bottom:22em;
+  }
+  
+  .page-grid{
+  width:100%;
+  margin-top:1em; 
+  padding:1.5em;
+  line-height: 1em;
+  }
+
+
+  .subscribe-grid form input{
+  margin:1.2em 0;
+  
+  }
+
+.details-grid{
+width:100%;
+overflow:hidden;
+}
+.details-grid .container-fluid{
+width:100%;
+padding:0;
+}
+
+.details-grid .page-header{
+padding:0.5em;
+}
+.details-grid .d-middle{
+display:flex;
+flex-direction: row;
+align-items:flex-start;
+justify-content: space-between;
+padding:2.5em;
+font-size:0.7em;
+}
+
+.details-grid .img-fluid{
+object-fit: cover;
+width: 100%;
+height: auto;
+padding:1em;
+}
+
+
+.details-grid .d-right{
+display:flex;
+align-items: center;
+justify-content: space-around;
+
+}
+ 
+
+.navbar-brand-details{
+background: rgb(236, 39, 39);
+color:white;
+padding:0 0.5em;
+font-style: italic;
+}
+
+.all-grid {
+margin: 0em auto;
+font-weight:normal;
+font-family: 'Courier New', Courier, monospace;
+width:100%;
+height:62%;
+}
+
+.all-grid-inner{
+width:100%;
+margin:0 auto;
+
+text-align:start;
+}
+.all-grid .card {
+border-radius: unset;
+margin-top: 0em;
+overflow: hidden;
+color: black;
+background: rgba(0, 0, 0, 1);
+border: unset;
+}
+
+.all-grid .all-image {
+border-radius:unset;
+}
+.category-menu-container {
+font-size:0.9em;
+font-family: 'Courier New', Courier, monospace;
+line-height: 0.5em;
+}
+
+
+}
+/* Medium Screens (min-width: 481px) and max-width: 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .home-grid .container {
+    width: 80%;
+  }
+
+
+.navbar-brand-home {
+  margin-left:0em;
+}
+.navbar-text-home {
+margin-left: 4em;
+}
+
+/* Header/Navbar Styles */
+.navbar-brand {
+  display: flex;
+  flex-direction: column;
+  background: rgb(236, 39, 39);/*
+  padding: 0.2em 0.25em;/*
+  margin-top: 0.2em;*/
+  font-style: italic;
+  font-size: 1.2em;
+  color: #fff;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-weight: bold;
+  margin-left: 2em;
+}
+.navbar{
+ margin:0;
+}
+.navbar-text {
+  color: white;
+  font-size: 0.8em;
+  margin-top: 0.25em;
+  display: none;
+}
+
+.page-header {
+  background: #eee;
+  width: 100%;
+  display:flex;
+  flex-direction: row;
+  padding:0.5em;
+}
+  .contact-grid {
+    width: 90%;
+   /* margin: 3em auto;*/
+  }
+  .contact-grid button {
+    width: 20%;
+  }
+
+  .page-grid {
+    width: 99%;
+    margin: 0em auto;
+    margin-top:2.5em;
+    line-height: 1.2em;
+    margin-bottom:18em;
+  }
+  .subscribe-grid {
+    width: 100%;
+    margin:0 auto;
+    margin-top:2.5em;
+    margin-bottom:22em;
+  }
+  .subscribe-grid button {
+    width: 20%;
+  }
+
+  .subscribe-grid form input{
+  margin:1.2em auto;
+  }
+  
+  .store-grid{
+  font-size:0.7em;
+   padding:0em 2em;
+   display:flex;
+   justify-content: center;
+   align-items: center;
+  }
+  
+
+
+   .store-grid .card-header {
+   padding:unset;
+   
+   margin-top:1.5em;
+  }
+  .store-grid .card-header-info {
+   padding:unset;
+   
+   margin-top:1em;
+  }
+  .store-grid .card-header-info, .store-grid .card-header {
+    display: block;
+  }
+
+   .store-grid .card {
+  flex-direction: column-reverse;
+  
+   border-radius:unset;
+  border:thin solid #fff;
+   }
+.store-grid .store-image {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  
+}
+
+
+  .preview-grid{
+  font-size:0.9em;
+   padding:0em 2em;
+   display:flex;
+   justify-content: center;
+   flex-direction: column-reverse;
+  }
+  
+
+  .preview-page-frame{
+  
+   display:flex;
+   justify-content:flex-center;
+   flex-direction: column-reverse;
+   padding:1em 0;
+   padding-bottom:2.5em;
+  }
+
+  
+.preview-grid .card-frame{
+padding:0;
+border:thin solid #fff;
+}
+
+  
+.preview-grid .card-header-inner{
+display:flex;
+padding:0em;
+justify-content: space-between;
+align-items: flex-end;
+}
+
+   .preview-grid .card-header {
+   padding:unset;
+   
+   margin-top:1.5em;
+  }
+  .preview-grid .card-header-info, .store-grid .card-header {
+    display: block;
+  }
+
+   .preview-grid .card {
+  flex-direction: column-reverse;
+  
+  border-radius:unset;
+  border:thin solid #fff;
+  border:0;
+   }
+.preview-grid .store-image {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  
+}
+
+    .page-footer .page-middle .page-inner{
+    width:95%;
+    }
+    .footer-column-inner-row-inner{
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    }
+
+    .page-footer{
+    background:black;
+    color:white;
+    width:100%;
+    }
+
+    .page-footer a{
+    color:white;
+    text-decoration: none;
+    }
+    
+    .page-footer .page-middle{
+    margin:0;
+    padding:5em 1em;
+    border:0;
+    }
+
+
+.details-grid{
+width:100%;
+overflow:hidden;
+
+}
+.details-grid .container-fluid{
+width:100%;
+padding:0;
+}
+
+.details-grid .page-header{
+padding:0.5em;
+}
+.details-grid .d-middle{
+display:flex;
+flex-direction: row;
+align-items:flex-start;
+justify-content: space-between;
+padding:2.5em;
+font-size:0.7em;
+
+}
+
+.details-grid .img-fluid{
+object-fit: cover;
+width: 100%;
+height: auto;
+padding:1em;
+}
+
+
+.details-grid .d-right{
+display:flex;
+align-items: center;
+justify-content: space-around;
+
+}
+ 
+
+.all-grid {
+margin: 0em auto;
+font-weight:normal;
+font-family: 'Courier New', Courier, monospace;
+width:100%;
+height:62%;
+}
+
+.all-grid-inner{
+width:95%;
+margin:0 auto;
+text-align:start;
+}
+.all-grid .card {
+border-radius: unset;
+margin-top: 0em;
+overflow: hidden;
+border: unset;
+}
+
+
+.all-grid .all-image {
+border-radius:unset;
+}
+.category-menu-container {
+font-size:0.9em;
+font-family: 'Courier New', Courier, monospace;
+line-height: 0.5em;
+}
+
+
+
+  }
+/* Large Screens (min-width: 769px) */
+@media (min-width: 769px) and (max-width:1031px) {
+
+  .navbar-home {
+    border-top: unset;
+  }
+
+  .navbar-brand-home {
+    padding: 0em 1.2em;
+    margin-left:3em;
+  }
+
+  .page-header {
+    background: #fff;
+    width: 100%;/*
+    padding: 0.3em;*/
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: unset;
+    }
+    
+    .page-footer{
+    width:75%;
+    padding:0;
+    }
+
+    .page-footer .page-middle .page-inner{
+    width:100%;
+    }
+
+  .home-grid {
+    width: 100%;
+  }
+
+  
+  .home-grid .container {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Fixed social-inner remains as is */
+  .homepage-frame {
+    background: black;
+    padding: 2em;
+    padding-bottom: 40px; /* Keep padding for fixed social bar */
+  }
+  .store-grid {
+    margin: 0em auto;
+    font-weight:normal;
+    font-family: 'Courier New', Courier, monospace;
+    width:52%;
+    height:62%;
+    
+  }
+  .store-grid .store-image {
+    opacity: 0.2;
+  }
+  .store-grid .store-image:hover {
+    opacity: 1;
+  }
+  .store-grid .card-header-info {
+    display: none;
+  }
+
+  .store-grid .card-header {
+    color: #eee;/*
+    margin: 0.5em;
+    padding: 0.3em;*/
+    display: block;
+    text-align: center;
+    position: absolute;
+    font-size: 0.75em;
+    background: rgba(100, 100, 100, 0.2);
+    border-radius: unset;
+  }
+
+
+  .store-grid .card:hover .card-header {
+    background:#fff;
+    margin:0.5em;
+    padding:0.4em;
+    color:black;
+    font-family:'Courier New', Courier, monospace;
+    font-weight:normal;
+    
+  }
+
+
+
+.store-grid .container-fluid{
+  flex-direction: column-reverse;
+  background: rgba(255, 255, 255, 1);
+  
+  font-size: 0.7em;
+  border: unset;
+}
+
+.store-grid .card {
+  border-radius: unset;
+  margin-top: 0em;
+  overflow: hidden;
+  color: black;
+  background: rgba(0, 0, 0, 1);
+  border: unset;
+}
+
+
+
+  .preview-grid {
+    flex-direction: column;
+    margin: 0em auto;
+    font-weight:normal;
+    font-family: 'Courier New', Courier, monospace;
+    width:72%;
+    height:62%;    
+  }
+  .preview-grid .store-image {
+    opacity: 0.2;
+  }
+  .preview-grid .store-image:hover {
+    opacity: 1;
+  }
+  .preview-grid .card-header-info {
+    display: none;
+  }
+
+  .preview-grid .card-header-inner{
+  display:flex;
+  justify-content: center;
+  
+
+  }
+
+.preview-grid .container-fluid{
+  flex-direction: column-reverse;
+  background: rgba(255, 255, 255, 1);
+  
+  font-size: 0.7em;
+  border: unset;
+}
+
+.preview-grid .card {
+  border-radius: unset;
+  margin-top: 0em;
+  overflow: hidden;
+  color: black;
+  background: rgba(0, 0, 0, 1);
+  border: unset;
+}
+
+
+  .contact-grid {
+    width: 53%;
+    /*margin-top: 1.5em;*/
+    margin:  auto;
+    margin-top:5.5em;
+  }
+
+  .page-grid{
+  width:53%;
+  }
+
+  .contact-grid button {
+    width: 28%;
+    padding: 0.3em;
+    margin-top: 0.8em;
+  }
+
+  .subscribe-grid {
+    width: 53%;
+    margin-top: 13em;
+    margin-bottom: 15em;
+    font-weight: unset;
+    margin: 5em auto;
+  }
+
+  .subscribe-grid button {
+    width: 13%;
+    padding: 0.3em;
+    margin-top: 1em;
+    font-weight: bold;
+  }
+
+  .contact-grid button{
+    width:10%;
+  }
+
+  .subscribe-grid form input {
+    margin: 1.5em 0;
+  }
+
+
+  .preview-grid {
+    flex-direction: column;
+    margin: 0em auto;
+    font-weight:normal;
+    font-family: 'Courier New', Courier, monospace;
+   
+    width:82%;
+    height:62%;
+  }
+  .preview-grid .store-image {
+    opacity:unset;
+  }
+  .preview-grid .store-image:hover {
+    opacity: unset;
+  }
+  .preview-grid .card-header-info {
+    padding-top:1em;
+    font-size:1em; 
+    display: flex;
+  }
+
+  .preview-grid .card-info-inner {
+    display: none;
+  }
+
+  .preview-grid .card-header {
+    color: #eee;/*
+    margin: 0.5em;
+    padding: 0.3em;*/
+    text-align: center;
+    position: absolute;
+    background: rgba(100, 100, 100, 0.2);
+    border-radius: unset;
+    display:none;
+  }
+
+
+  .preview-grid .card:hover .card-header {
+    background:#fff;
+    margin:0.5em;
+    padding:0.4em;
+    color:black;
+    font-family:'Courier New', Courier, monospace;
+    font-weight:normal;
+  }
+
+
+
+.preview-grid .container-fluid{
+  flex-direction: column-reverse;
+  background: rgba(255, 255, 255, 1);
+  
+  border: unset;
+}
+
+.preview-grid .card {
+  border-radius: unset;
+  margin-top: 0em;
+  overflow: hidden;
+  color: black;
+  background: rgba(0, 0, 0, 1);
+  border: unset;
+}
+
+.preview-grid .card-frame{
+padding:0;
+border:thin solid #fff;
+}
+
+
+.preview-grid .card-header-inner{
+display:flex;
+justify-content: flex-end;
+
+}
+.home-page-layout{
+padding-top:2em;
+
+}
+ .page-footer{
+ width:72%;
+ padding-top:0em;
+ }
+
+
+ .details-grid{
+margin-top:3em;
+ }
+
+
+.details-grid .container-fluid{
+width:85%;
+font-size:0.7em;
+font-family: 'Courier New', Courier, monospace;
+margin-bottom:6em;
+line-height: 1.2em;
+}
+
+.details-grid .img-fluid{
+object-fit: cover;
+width: 100%;
+height: auto;
+padding:1em;
+}
+
+.details-grid .d-middle{
+display:flex;
+flex-direction: row;
+align-items:flex-start;
+justify-content: space-around;
+padding-left:3em;
+}
+
+.details-grid .d-right{
+display:flex;
+align-items: flex-start;
+justify-content: space-around;
+}
+
+.details-btn{
+background:black;
+border-radius:unset;
+padding:0.4em 1.4em;
+color:white;
+border:thin solid black;
+}
+
+.navbar-brand-details{
+background: rgb(236, 39, 39);
+color:white;
+padding:0 0.5em;
+font-size:1.8em;
+font-style: italic;
+}
+
+
+/* Header/Navbar Styles */
+.navbar-brand {
+  background: rgb(236, 39, 39);
+  font-size: 1.8em;
+}
+
+
+.all-grid {
+margin: 0em auto;
+font-weight:normal;
+font-family: 'Courier New', Courier, monospace;
+width:100%;
+height:62%;
+}
+
+.all-grid-inner{
+width:80%;
+margin:0 auto;
+text-align:start;
+}
+.all-grid .card {
+border-radius: unset;
+margin-top: 0em;
+overflow: hidden;
+border: unset;
+}
+
+
+.all-grid .all-image {
+border-radius:unset;
+}
+.category-menu-container {
+font-size:0.7em;
+font-family: 'Courier New', Courier, monospace;
+line-height: 0.5em;
+}
+
+
+
+}
+
+@media (min-width:1031px){
+
+  .store-grid {
+    margin: 0em auto;
+    font-weight:normal;
+    font-family: 'Courier New', Courier, monospace;
+    width:52%;
+    height:62%;
+  }
+  .store-grid .store-image {
+    opacity: 0.2;
+  }
+  .store-grid .store-image:hover {
+    opacity: 1;
+  }
+  .store-grid .card-header-info {
+    display: none;
+  }
+
+  .store-grid .card-header {
+    color: #eee;/*
+    margin: 0.5em;
+    padding: 0.3em;*/
+    display: block;
+    text-align: center;
+    position: absolute;
+    font-size: 0.75em;
+    background: rgba(100, 100, 100, 0.2);
+    border-radius: unset;
+  }
+
+
+  .store-grid .card:hover .card-header {
+    background:#fff;
+    margin:0.5em;
+    padding:0.4em;
+    color:black;
+    font-family:'Courier New', Courier, monospace;
+    font-weight:normal;
+    
+  }
+
+
+
+.store-grid .container-fluid{
+  flex-direction: column-reverse;
+  background: rgba(255, 255, 255, 1);
+  font-size: 0.7em;
+  border: unset;
+
+}
+
+.store-grid .card {
+  border-radius: unset;
+  margin-top: 0em;
+  overflow: hidden;
+  color: black;
+  background: rgba(0, 0, 0, 1);
+  border: unset;
+}
+
+
+
+  .preview-grid {
+    flex-direction: column;
+    margin: 0em auto;
+    font-weight:normal;
+    font-family: 'Courier New', Courier, monospace;
+    width:72%;
+    height:62%; 
+    
+    
+  }
+  .preview-grid .store-image {
+    opacity:unset;
+  }
+  .preview-grid .store-image:hover {
+    opacity: unset;
+  }
+  .preview-grid .card-header-info {
+    padding-top:1em;
+    font-size:1em; 
+    display: flex;
+  }
+
+  .preview-grid .card-info-inner {
+    display: none;
+  }
+
+  .preview-grid .card-header {
+    color: #eee;/*
+    margin: 0.5em;
+    padding: 0.3em;*/
+    text-align: center;
+    position: absolute;
+    font-size: 0.75em;
+    background: rgba(100, 100, 100, 0.2);
+    border-radius: unset;
+    display:none;
+  }
+
+
+  .preview-grid .card:hover .card-header {
+    background:#fff;
+    margin:0.5em;
+    padding:0.4em;
+    color:black;
+    font-family:'Courier New', Courier, monospace;
+    font-weight:normal;
+  }
+
+
+
+.preview-grid .container-fluid{
+  flex-direction: column-reverse;
+  background: rgba(255, 255, 255, 1);
+  
+  font-size: 0.7em;
+  border: unset;
+}
+
+.preview-grid .card {
+  border-radius: unset;
+  margin-top: 0em;
+  overflow: hidden;
+  color: black;
+  background: rgba(0, 0, 0, 1);
+  border: unset;
+}
+
+.preview-grid .card-frame{
+padding:0;
+border:thin solid #fff;
+}
+
+.preview-grid .card-header-inner{
+display:flex;
+justify-content: flex-end;
+}
+
+.home-page-layout{
+padding-top:0em;
+}
+ .page-footer{
+ width:57%;
+ padding-top:0em;
+ 
+ }
+
+
+/* Header/Navbar Styles */
+.navbar-brand {
+  background: rgb(236, 39, 39);
+  font-size: 1.8em;
+}
+
+
+ .details-grid{
+margin-top:3em;
+ }
+
+.details-grid .container-fluid{
+width:65%;
+font-size:0.7em;
+font-family: 'Courier New', Courier, monospace;
+margin-bottom:6em;
+line-height: 1.2em;
+}
+
+.details-grid .d-middle{
+display:flex;
+flex-direction: row;
+align-items:center;
+justify-content: flex-end;
+padding-left:2em;
+}
+
+.details-grid .img-fluid{
+object-fit: cover;
+width: 100%;
+height: auto;
+padding:1em;
+}
+.details-grid .d-right{
+display:flex;
+align-items: center;
+justify-content: space-around;
+}
+
+.details-btn{
+background:black;
+border-radius:unset;
+padding:0.4em 1.4em;
+color:white;
+border:thin solid black;
+}
+
+.navbar-brand-details{
+background: rgb(236, 39, 39);
+color:white;
+padding:0 0.5em;
+font-size:1.8em;
+font-style: italic;
+}
+
+.all-grid {
+margin: 0em auto;
+font-weight:normal;
+font-family: 'Courier New', Courier, monospace;
+width:100%;
+height:62%;
+}
+.all-grid-inner{
+width:80%;
+margin:0 auto;
+text-align:end;
+}
+.all-grid .card {
+border-radius: unset;
+margin-top: 0em;
+overflow: hidden;
+border: unset;
+}
+
+
+.all-grid .all-image {
+border-radius:unset;
+}
+.category-menu-container {
+font-size:0.7em;
+font-family: 'Courier New', Courier, monospace;
+line-height: 0.5em;
+}
+
+/* HomePage Layout (from separate file, integrated here) */
+.home-page-layout {
+height:80vh;
+overflow-y: scroll;
+-webkit-overflow-scrolling: touch;
+overflow: auto;
+}
+
+.home-content-scrollable {
+height:30%;
+}
+
+}

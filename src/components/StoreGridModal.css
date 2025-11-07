@@ -1,0 +1,189 @@
+/* src/components/StoreGridModal.css */
+
+/* --- Modal Backdrop --- */
+.store-grid-modal-backdrop {
+  display: block !important;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1050;
+}
+
+/* --- Modal Dialog --- */
+.store-grid-modal-dialog {
+  max-width: 86vw !important;
+  z-index: 1051;
+  border-radius: 0;
+  display: flex;
+  height: 90vh;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* --- Modal Content --- */
+.store-grid-modal-content {
+  height: 80vh;
+  width: 100%;
+  border-radius: 0 !important;
+  background-color: white;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* --- Modal Body --- */
+.store-grid-modal-body {
+  display: flex;
+  flex-grow: 1;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.69em;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+/* --- LEFT SECTION --- */
+.store-grid-modal-left-section {
+  width: 100%;
+  text-align: flex-start;
+  height: 20vh;
+  padding: 1.5rem 0;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.store-grid-modal-left-section p {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 3.8em;
+}
+
+.store-grid-modal-left-section p:first-of-type {
+  margin-bottom: 4em;
+}
+
+/* --- Image and Map Container --- */
+.store-grid-modal-image-and-map-container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* --- MIDDLE SECTION and RIGHT SECTION --- */
+.store-grid-modal-middle-section,
+.store-grid-modal-right-section {
+  width: 100%;
+  flex-grow: 1;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* --- The actual image and iframe inside their containers --- */
+.store-grid-modal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.store-grid-modal-right-section iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* --- NEW STYLING FOR THE THREE IMAGES --- */
+.store-grid-modal-middle-section {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.middle-section-main-image {
+  /* CRITICAL FIX: Main image takes more space (2 parts) */
+  flex-grow: 2;
+  height: 0;
+  overflow: hidden;
+}
+
+.middle-section-main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.middle-section-row-images {
+  /* CRITICAL FIX: Row images take the remaining space (1 part) */
+  flex-grow: 1;
+  display: flex;
+  height: 0;
+}
+
+.middle-section-row-image {
+  flex-grow: 1;
+  height: 0;
+  padding-bottom: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.middle-section-row-image img.store-grid-modal-image-row {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- Desktop Media Query --- */
+@media (min-width: 768px) {
+  .store-grid-modal-content {
+    flex-direction: row;
+  }
+  
+  .store-grid-modal-body {
+    flex-direction: row;
+    height: 100%;
+    align-items: stretch;
+  }
+
+  .store-grid-modal-left-section {
+    width: 23%;
+    height: 100%;
+    padding: 1.5rem;
+  }
+  
+  .store-grid-modal-image-and-map-container {
+    display: flex;
+    flex-direction: row;
+    width: 77%;
+    height: 100%;
+    align-items: stretch;
+    overflow: hidden;
+  }
+
+  .store-grid-modal-middle-section {
+    width: 59.5%;
+    height: 100%;
+  }
+
+  .store-grid-modal-right-section {
+    width: 40.5%;
+    height: 100%;
+  }
+}

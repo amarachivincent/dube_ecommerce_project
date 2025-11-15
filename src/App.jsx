@@ -1,54 +1,57 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import StoresPage from './pages/StoresPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
-import SubscribePage from './pages/SubscribePage'; // Assuming this is the '/mail' route
+import SubscribePage from './pages/SubscribePage';
 import PreviewPage from './pages/PreviewPage';
 import DetailsPage from './pages/DetailsPage';
 import AllPage from './pages/AllPage';
+import NewsPage from './pages/NewsPage';
+import AdminDashboard from './pages/AdminDashboard'; 
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
-    const [customStores, setCustomStores] = useState([]);
-    // currentTime state is not directly used in App.jsx, but getTimer is passed
-    // const [currentTime, setCurrentTime] = useState(''); 
+    const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [stores, setStores] = useState([]); // New state for store data
+    const [news, setNews] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    // Memoize doGet using useCallback to prevent it from being recreated on every render.
-    // This is good practice, especially if it were a dependency for other effects or memoized components.
-    const doGet = useCallback((url) => {
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', url);
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    try {
-                        let result = JSON.parse(xhr.responseText);
-                        setCustomStores(result);
-                    } catch (e) {
-                        console.error("Error parsing JSON for doGet:", e);
-                    }
-                } else {
-                    console.error("doGet request failed with status:", xhr.status);
-                }
-            }
-        };
-        xhr.send(null);
-    }, []); // Empty dependency array means doGet is stable and won't change across renders
-
-    // Memoize getTimer using useCallback for stability when passed as a prop.
-    const getTimer = useCallback(() => {
+    let getTimer = () => {
         let date = new Date().toLocaleString();
         return date;
-    }, []); // Empty dependency array means getTimer is stable
+    };
 
     useEffect(() => {
-        // Fetch data when the component mounts
-        doGet("http://localhost/daniel/api.php?q=more");
-        // If you want to use the online API, uncomment the line below and comment the localhost one:
-        // doGet("https://businessreviews.com.ng/dist/api.php?q=more");
-    }, [doGet]); // doGet is a dependency, but it's stable due to useCallback
+        const fetchData = async () => {
+            try {
+                // Fetch data from your combined API endpoint
+                const response = await fetch("http://localhost/dube/api.php?q=stores");
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                
+                setProducts(data.products);
+                setCategories(data.categories);
+                setStores(data.stores); // Set the new stores state
+                setNews(data.news);
+            } catch (error) {
+                console.error("Failed to fetch data:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <Router>
@@ -56,16 +59,17 @@ const App = () => {
                 <main className="flex-grow-1">
                     <Routes>
                         <Route path="/" element={<HomePage getTimer={getTimer} />} />
-                        <Route path="/stores" element={<StoresPage customStores={customStores} getTimer={getTimer} />} />
+                        {/* StoresPage, PreviewPage, DetailsPage now use the 'stores' prop */}
+                        <Route path="/stores" element={<StoresPage stores={stores} getTimer={getTimer} />} />
                         <Route path="/about" element={<AboutPage getTimer={getTimer} />} />
                         <Route path="/contact" element={<ContactPage getTimer={getTimer} />} />
-                        {/* Assuming '/mail' corresponds to SubscribePage based on previous context */}
                         <Route path="/mail" element={<SubscribePage getTimer={getTimer} />} />
-                        {/* Ensure 'stores' prop is passed to pages that need to filter/display products */}
-                        <Route path="/preview" element={<PreviewPage stores={customStores} getTimer={getTimer} />} />
-                        {/* Dynamic route for details page, passing all stores for lookup */}
-                        <Route path="/details/:storeId" element={<DetailsPage stores={customStores} getTimer={getTimer} />} />
-                        <Route path="/all" element={<AllPage stores={customStores} getTimer={getTimer} />} />
+                        <Route path="/news" element={<NewsPage getTimer={getTimer} news={news} />} />
+                        <Route path="/preview" element={<PreviewPage products={products} getTimer={getTimer} />} />
+                        <Route path="/details/:productId" element={<DetailsPage products={products} getTimer={getTimer} />} />
+                        {/* AllPage continues to use 'products' and 'categories' */}
+                        <Route path="/all" element={<AllPage products={products} categories={categories} getTimer={getTimer} />} />
+                        <Route path="/admin" element={<AdminDashboard />} />
                     </Routes>
                 </main>
             </div>

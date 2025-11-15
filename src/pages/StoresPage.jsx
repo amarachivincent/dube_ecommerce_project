@@ -5,14 +5,14 @@ import StoreGrid from '../components/StoreGrid';
 import PageFooter from '../components/PageFooter';
 
 
-const StoresPage = ({locations, customStores, getTimer}) => {
+const StoresPage = ({ stores, getTimer}) => {
   
   return (
     <>
       <div className="container-fluid wrapper">
       <PageHeader title="Dube"  date={getTimer()} /> {/* Specific header for stores */}
         <br/>
-        <StoreGrid stores={customStores} location={locations} />
+        <StoreGrid stores={stores} />
       </div>
       <PageFooter />
     </>

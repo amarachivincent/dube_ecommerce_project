@@ -4,9 +4,9 @@ header("Access-Control-Allow-Headers:*");
 header("Content-Type: application/json; charset=utf-8");
 
 $host = "localhost";
-$user = "";
+$user = "root";
 $pass = "";
-$dbname = "";
+$dbname = "realestate";
 
 $conn = mysqli_connect($host, $user, $pass, $dbname);
 

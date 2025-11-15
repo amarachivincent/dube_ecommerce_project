@@ -390,7 +390,7 @@ font-size:1.1em;
 
 .preview-grid .card-header-info {
   display: block;
-  padding: 0.2em 0;
+ /* padding: 0.2em 0;*/
   
 }
 
@@ -511,21 +511,13 @@ h4 {
   font-weight: bold;
 }
 
-/* HomePage Layout (from separate file, integrated here) *//*
-.home-page-layout {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  
+
+input:focus,textarea {
+    border-color: #fff; /* A common gray border color, or any color you prefer */
+    box-shadow: none; /* This is crucial to remove the blue glow/shadow */
+    outline: 0; /* Ensures no default browser outline appears */
 }
 
-.home-content-scrollable {
-  height:20%;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  overflow: auto;
- 
-}*/
 
 /* Media Queries for Responsiveness (No changes needed here for link/icon gap) */
 
@@ -534,7 +526,6 @@ h4 {
   .home-grid .container {
     width: 90%;
   }
-
 
 .navbar-brand-home {
   margin-left:0em;
@@ -558,6 +549,7 @@ margin-left: 4em;
   align-items: flex-start;
   font-weight: bold;
   margin-left: 2em;
+  margin-top:0.5em;
 }
 
 .navbar-text {
@@ -574,6 +566,7 @@ margin-left: 4em;
   display:flex;
   flex-direction: row;
   padding:0.5em;
+
 }
 
 .page-footer .page-inner{
@@ -582,11 +575,21 @@ font-family:'Courier New', Courier, monospace;
 width:80%;
 margin:0 auto;
 }
+
+
+.container-fluid{
+  padding:0em;
+  padding-bottom:0.5em;
+  }
+
  .navbar{
   margin-top:0;
  }
   .contact-grid button {
     width: 30%;
+  }
+  .subscribe-grid{
+  padding:1em;
   }
   .subscribe-grid button {
     width: 30%;
@@ -627,12 +630,12 @@ margin:0 auto;
   width:100%;
   }
 
+  
   .store-grid{
   font-size:0.7em;
   margin-top:0;
   padding:0.2em 1.5em;
   }
-  
    .store-grid .card {
   flex-direction: column-reverse;
   border-radius:unset;
@@ -647,33 +650,37 @@ margin:0 auto;
   }
   .store-grid .card-header-info {
    padding:unset;
-   
-   margin-top:0.5em;
+    margin-top:0.5em;
   }
 
 
 
   .preview-grid {
+    width:100%;
+    height:62%;
+    flex-direction: column;
     margin: 0em auto;
     font-weight:normal;
     font-family: 'Courier New', Courier, monospace;
-    width:100%;
-    height:62%;
+   padding:0 2em;
   }
   .preview-grid .store-image {
-    opacity:unset;
+  opacity:unset;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
   }
   .preview-grid .store-image:hover {
     opacity: unset;
   }
-  .preview-grid .card-header-info {
-    padding-top:1em;
-    font-size: 0.7em;
+  .preview-grid-frame .card-header-info {
+    padding-top:0em;
+    font-size: 0.75em;
     display: flex;
   }
 
-  .preview-grid .card-info-inner {
-    display: none;
+  .preview-grid-frame .card-info-inner {
+    display: block;
   }
 
 
@@ -699,11 +706,29 @@ margin:0 auto;
   
 }
 
+
 .preview-grid .card-frame{
 padding:0;
 border:thin solid #fff;
-  width:25%;
+width:25%;
 }
+
+  .preview-grid-frame{
+  font-size:0.9em;
+   padding:0em;
+   display:flex;
+   justify-content: center;
+   flex-direction: column-reverse;
+  }
+  
+  
+.preview-grid-frame .card-header-inner{
+display:flex;
+padding-top:0.5em;
+justify-content: space-between;
+align-items: flex-end;
+}
+
 
 
   .subscribe-grid {
@@ -726,6 +751,9 @@ border:thin solid #fff;
   
   }
 
+.subscribe-grid button{
+width:unset;
+}
 .details-grid{
 width:100%;
 overflow:hidden;
@@ -803,7 +831,26 @@ line-height: 0.5em;
 }
 
 
+.news-grid{
+width:95%;
+margin:0 auto;
 }
+.news-item{
+font-size:0.7em;
+font-family:'Courier New', Courier, monospace;
+}
+
+.news-item-body{
+padding-bottom:1em;
+}
+.news-item h6{
+font-size:1.2em;
+font-family: 'Courier New', Courier, monospace;
+}
+
+}
+
+
 /* Medium Screens (min-width: 481px) and max-width: 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
   .home-grid .container {
@@ -832,6 +879,7 @@ margin-left: 4em;
   align-items: flex-start;
   font-weight: bold;
   margin-left: 2em;
+  margin-top:0.5em;
 }
 .navbar{
  margin:0;
@@ -850,6 +898,14 @@ margin-left: 4em;
   flex-direction: row;
   padding:0.5em;
 }
+
+
+  
+ .container-fluid{
+  padding:0em;
+  padding-bottom:0.5em;
+  }
+
   .contact-grid {
     width: 90%;
    /* margin: 3em auto;*/
@@ -864,12 +920,14 @@ margin-left: 4em;
     margin-top:2.5em;
     line-height: 1.2em;
     margin-bottom:18em;
+    padding:1em;
   }
   .subscribe-grid {
     width: 100%;
     margin:0 auto;
     margin-top:2.5em;
     margin-bottom:22em;
+    padding:1em;
   }
   .subscribe-grid button {
     width: 20%;
@@ -884,7 +942,7 @@ margin-left: 4em;
    padding:0em 2em;
    display:flex;
    justify-content: center;
-   align-items: center;
+   
   }
   
 
@@ -916,45 +974,30 @@ margin-left: 4em;
   
 }
 
+  .preview-grid {
+    flex-direction: column;
+    margin: 0em auto;
+    font-weight:normal;
+    font-family: 'Courier New', Courier, monospace;
+   padding:0 2em;
+  }
 
-  .preview-grid{
+  .preview-grid-frame{
   font-size:0.9em;
-   padding:0em 2em;
+   padding:0em;
    display:flex;
    justify-content: center;
    flex-direction: column-reverse;
   }
   
-
-  .preview-page-frame{
   
-   display:flex;
-   justify-content:flex-center;
-   flex-direction: column-reverse;
-   padding:1em 0;
-   padding-bottom:2.5em;
-  }
-
-  
-.preview-grid .card-frame{
-padding:0;
-border:thin solid #fff;
-}
-
-  
-.preview-grid .card-header-inner{
+.preview-grid-frame .card-header-inner{
 display:flex;
-padding:0em;
+padding-top:0.5em;
 justify-content: space-between;
 align-items: flex-end;
 }
-
-   .preview-grid .card-header {
-   padding:unset;
-   
-   margin-top:1.5em;
-  }
-  .preview-grid .card-header-info, .store-grid .card-header {
+  .preview-grid-frame .card-header-info, .preview-grid .card-header {
     display: block;
   }
 
@@ -972,6 +1015,28 @@ align-items: flex-end;
   
 }
 
+
+
+.preview-grid .card-frame{
+padding:0;
+border:thin solid #fff;
+}
+
+
+
+/* HomePage Layout (from separate file, integrated here) */
+.home-page-layout {
+height:60vh;
+overflow-y: scroll;
+-webkit-overflow-scrolling: touch;
+/*overflow: auto;*/
+overflow-x:hidden;
+padding-top:0em;
+}
+
+.home-content-scrollable {
+height:30%;
+}
     .page-footer .page-middle .page-inner{
     width:95%;
     }
@@ -1047,7 +1112,7 @@ height:62%;
 }
 
 .all-grid-inner{
-width:95%;
+width:80%;
 margin:0 auto;
 text-align:start;
 }
@@ -1059,6 +1124,10 @@ border: unset;
 }
 
 
+.all-grid-right{
+width:100%;
+}
+
 .all-grid .all-image {
 border-radius:unset;
 }
@@ -1069,6 +1138,22 @@ line-height: 0.5em;
 }
 
 
+.news-grid{
+width:95%;
+margin:0 auto;
+}
+.news-item{
+font-size:0.7em;
+font-family:'Courier New', Courier, monospace;
+}
+
+.news-item-body{
+padding-bottom:1em;
+}
+.news-item h6{
+font-size:1.2em;
+font-family: 'Courier New', Courier, monospace;
+}
 
   }
 /* Large Screens (min-width: 769px) */
@@ -1186,50 +1271,6 @@ line-height: 0.5em;
 }
 
 
-
-  .preview-grid {
-    flex-direction: column;
-    margin: 0em auto;
-    font-weight:normal;
-    font-family: 'Courier New', Courier, monospace;
-    width:72%;
-    height:62%;    
-  }
-  .preview-grid .store-image {
-    opacity: 0.2;
-  }
-  .preview-grid .store-image:hover {
-    opacity: 1;
-  }
-  .preview-grid .card-header-info {
-    display: none;
-  }
-
-  .preview-grid .card-header-inner{
-  display:flex;
-  justify-content: center;
-  
-
-  }
-
-.preview-grid .container-fluid{
-  flex-direction: column-reverse;
-  background: rgba(255, 255, 255, 1);
-  
-  font-size: 0.7em;
-  border: unset;
-}
-
-.preview-grid .card {
-  border-radius: unset;
-  margin-top: 0em;
-  overflow: hidden;
-  color: black;
-  background: rgba(0, 0, 0, 1);
-  border: unset;
-}
-
-
   .contact-grid {
     width: 53%;
     /*margin-top: 1.5em;*/
@@ -1276,9 +1317,8 @@ line-height: 0.5em;
     margin: 0em auto;
     font-weight:normal;
     font-family: 'Courier New', Courier, monospace;
-   
-    width:82%;
-    height:62%;
+    width:52%;
+    height:42%;
   }
   .preview-grid .store-image {
     opacity:unset;
@@ -1286,44 +1326,23 @@ line-height: 0.5em;
   .preview-grid .store-image:hover {
     opacity: unset;
   }
-  .preview-grid .card-header-info {
+  .preview-grid-frame .card-header-info {
     padding-top:1em;
-    font-size:1em; 
+    font-size:0.9em; 
     display: flex;
   }
 
-  .preview-grid .card-info-inner {
+  .preview-grid-frame .card-info-inner {
     display: none;
   }
-
-  .preview-grid .card-header {
-    color: #eee;/*
-    margin: 0.5em;
-    padding: 0.3em;*/
-    text-align: center;
-    position: absolute;
-    background: rgba(100, 100, 100, 0.2);
-    border-radius: unset;
-    display:none;
-  }
-
-
-  .preview-grid .card:hover .card-header {
-    background:#fff;
-    margin:0.5em;
-    padding:0.4em;
-    color:black;
-    font-family:'Courier New', Courier, monospace;
-    font-weight:normal;
-  }
-
-
+  
 
 .preview-grid .container-fluid{
   flex-direction: column-reverse;
   background: rgba(255, 255, 255, 1);
   
   border: unset;
+  
 }
 
 .preview-grid .card {
@@ -1341,15 +1360,12 @@ border:thin solid #fff;
 }
 
 
-.preview-grid .card-header-inner{
+.preview-grid-frame .card-header-inner{
 display:flex;
 justify-content: flex-end;
 
 }
-.home-page-layout{
-padding-top:2em;
 
-}
  .page-footer{
  width:72%;
  padding-top:0em;
@@ -1418,7 +1434,7 @@ font-style: italic;
 margin: 0em auto;
 font-weight:normal;
 font-family: 'Courier New', Courier, monospace;
-width:100%;
+width:85%;
 height:62%;
 }
 
@@ -1435,16 +1451,51 @@ border: unset;
 }
 
 
+.all-grid-right{
+width:80%;
+}
+.all-grid .container-fluid{
+width:100%;
+}
 .all-grid .all-image {
 border-radius:unset;
 }
 .category-menu-container {
 font-size:0.7em;
 font-family: 'Courier New', Courier, monospace;
-line-height: 0.5em;
+line-height:0.5em;
+
 }
 
+.news-grid{
+width:50%;
+}
+.news-item{
+font-size:0.7em;
+font-family:'Courier New', Courier, monospace;
+}
 
+.news-item-body{
+padding-bottom:10em;
+}
+.news-item h6{
+font-size:1.2em;
+font-family: 'Courier New', Courier, monospace;
+}
+
+/* HomePage Layout (from separate file, integrated here) */
+.home-page-layout {
+height:60vh;
+overflow-y: scroll;
+-webkit-overflow-scrolling: touch;
+/*overflow: auto;*/
+overflow-x:hidden;
+padding-top:0em;
+}
+
+.home-content-scrollable {
+height:30%;
+}
 
 }
 
@@ -1516,49 +1567,26 @@ line-height: 0.5em;
     margin: 0em auto;
     font-weight:normal;
     font-family: 'Courier New', Courier, monospace;
-    width:72%;
+    width:52%;
     height:62%; 
     
-    
   }
+
   .preview-grid .store-image {
     opacity:unset;
   }
   .preview-grid .store-image:hover {
     opacity: unset;
   }
-  .preview-grid .card-header-info {
+  .preview-grid-frame .card-header-info {
     padding-top:1em;
-    font-size:1em; 
+    font-size:0.9em; 
     display: flex;
   }
 
-  .preview-grid .card-info-inner {
+  .preview-grid-frame .card-info-inner {
     display: none;
   }
-
-  .preview-grid .card-header {
-    color: #eee;/*
-    margin: 0.5em;
-    padding: 0.3em;*/
-    text-align: center;
-    position: absolute;
-    font-size: 0.75em;
-    background: rgba(100, 100, 100, 0.2);
-    border-radius: unset;
-    display:none;
-  }
-
-
-  .preview-grid .card:hover .card-header {
-    background:#fff;
-    margin:0.5em;
-    padding:0.4em;
-    color:black;
-    font-family:'Courier New', Courier, monospace;
-    font-weight:normal;
-  }
-
 
 
 .preview-grid .container-fluid{
@@ -1583,14 +1611,11 @@ padding:0;
 border:thin solid #fff;
 }
 
-.preview-grid .card-header-inner{
+.preview-grid-frame .card-header-inner{
 display:flex;
 justify-content: flex-end;
 }
 
-.home-page-layout{
-padding-top:0em;
-}
  .page-footer{
  width:57%;
  padding-top:0em;
@@ -1657,13 +1682,15 @@ font-style: italic;
 margin: 0em auto;
 font-weight:normal;
 font-family: 'Courier New', Courier, monospace;
-width:100%;
+width:85%;
 height:62%;
 }
 .all-grid-inner{
-width:80%;
+width:100%;
 margin:0 auto;
 text-align:end;
+display:flex;
+justify-content: space-around;
 }
 .all-grid .card {
 border-radius: unset;
@@ -1672,7 +1699,12 @@ overflow: hidden;
 border: unset;
 }
 
-
+.all-grid-right{
+width:65%;
+}
+.all-grid .container-fluid{
+width:100%;
+}
 .all-grid .all-image {
 border-radius:unset;
 }
@@ -1682,12 +1714,29 @@ font-family: 'Courier New', Courier, monospace;
 line-height: 0.5em;
 }
 
+.news-grid{
+width:50%;
+}
+.news-item{
+font-size:0.7em;
+font-family:'Courier New', Courier, monospace;
+}
+
+.news-item-body{
+padding-bottom:18em;
+}
+.news-item h6{
+font-size:1.2em;
+font-family: 'Courier New', Courier, monospace;
+}
 /* HomePage Layout (from separate file, integrated here) */
 .home-page-layout {
-height:80vh;
+height:60vh;
 overflow-y: scroll;
 -webkit-overflow-scrolling: touch;
-overflow: auto;
+/*overflow: auto;*/
+overflow-x:hidden;
+padding-top:0em;
 }
 
 .home-content-scrollable {

@@ -10,33 +10,33 @@ const PageFooter = () => {
         {/* Two items, centered, with minimal horizontal padding */}
         <div className="row footer-row-1a gx-0 d-none d-md-flex page-outer">
           <div className="col-auto text-center px-0"> {/* Added ms-4 for spacing */}
-            <Link to="/">home</Link>
+            <Link to="/preview">shop</Link>
           </div>
          
            <div className="col-auto text-center px-0">
             <Link to="/preview">spring/summer 2025 preview</Link>&nbsp;&nbsp;&nbsp;
-            <Link to="/">lookbook </Link>
+            {/*<Link to="/">lookbook </Link>*/}
             &nbsp;&nbsp;&nbsp;
-            <Link to="/">news </Link>
+            <Link to="/news">news </Link>
           </div>
         </div>
 
         {/* Original Row 1 (now Row 1B): Displays on Medium and Smaller screens (md and down) */}
         {/* Changed to justify-content-around for space around items */}
         <div className="row footer-row-1b gx-0 d-md-none justify-content-around page-inner"  > {/* Added justify-content-around */}
-          <div className="col-3 text-center px-0">
-            <Link to="/">home</Link>
+          <div className="col-4 text-center px-0">
+            <Link to="preview">shop</Link>
           </div>
-          <div className="col-3 text-center px-0">
+          <div className="col-4 text-center px-0">
             <Link to="/preview">preview</Link>
           </div>
-          {/* Item 3 */}
+          {/* Item 3 *
           <div className="col-3 text-center px-0">
             <Link to="/">lookbook</Link>
           </div>
           {/* Item 4 */}
-          <div className="col-3 text-center px-0">
-            <Link to="/">news</Link>
+          <div className="col-4 text-center px-0">
+            <Link to="/news">news</Link>
           </div>
         </div>
 

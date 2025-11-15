@@ -5,19 +5,19 @@ import PageHeader from '../components/PageHeader';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 
 
-const DetailsPage = ({ stores,getTimer}) => {
-    const { storeId } = useParams();
+const DetailsPage = ({ products,getTimer}) => {
+    const { productId } = useParams();
     const navigate = useNavigate();
 
-    const selectedStore = stores.find(store => store.id === storeId);
+    const selectedProduct = products.find(product => product.product_id === productId);
 
-    if (!selectedStore) {
-        return <div>Store not found.</div>;
+    if (!selectedProduct) {
+        return <div>Product not found.</div>;
     }
     
     // Placeholder for total images and current image number
-    const totalImages = stores.length;
-    const currentImageIndex = stores.findIndex(store => store.id === storeId);
+    const totalImages = products.length;
+    const currentImageIndex = products.findIndex(product => product.product_id === productId);
     const currentImageNumber = currentImageIndex !== -1 ? currentImageIndex + 1 : 1;
 
     return (
@@ -36,8 +36,8 @@ const DetailsPage = ({ stores,getTimer}) => {
               <div className="row flex-grow-1 d-flex justify-content-center align-items-center">
                 <div className="col-sm-12 text-center">
                    { <img
-                        src={`../images/${selectedStore.image}`}
-                        alt={`${selectedStore.title} store`}
+                        src={`../images/${selectedProduct.image}`}
+                        alt={`${selectedProduct.title} store`}
                         className="img-fluid"
                     />}
                 </div>
@@ -54,9 +54,9 @@ const DetailsPage = ({ stores,getTimer}) => {
                 {/* Column 2: Description */}
                 <div className="col-md-8 text-start d-middle" >
                   <div>
-                    <p className="mb-0"><strong>{selectedStore.title}</strong></p>
-                    <p className="mb-0">{selectedStore.description}</p>
-                    <p className="mb-0">{selectedStore.title}</p>
+                    <p className="mb-0"><strong>{selectedProduct.title}</strong></p>
+                    <p className="mb-0">{selectedProduct.description}</p>
+                    <p className="mb-0">{selectedProduct.title}</p>
                   </div>
                     
                      <div className=" text-end w-50">

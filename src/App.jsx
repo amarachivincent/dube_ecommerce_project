@@ -29,7 +29,8 @@ const App = () => {
         const fetchData = async () => {
             try {
                 // Fetch data from your combined API endpoint
-                const response = await fetch("http://localhost/dube/api.php?q=stores");
+                const response = await fetch("http://businessreviews.com.ng/dist/api.php?q=stores");
+                //const response = await fetch("http://localhost/dube/api.php?q=stores");
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
